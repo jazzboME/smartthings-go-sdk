@@ -75,7 +75,7 @@ func (c *SmartThingsClient) do(req *http.Request, v interface{}) (*http.Response
 		return nil, err
 	}
 	defer resp.Body.Close()
-	if 200 != resp.StatusCode {
+	if resp.StatusCode != 200 {
 		bodyBytes, _ := ioutil.ReadAll(resp.Body)
 		bodyString := string(bodyBytes)
 		return nil, fmt.Errorf("expected status code 200, but API responded with %d . Response Body: %s", resp.StatusCode, bodyString)
