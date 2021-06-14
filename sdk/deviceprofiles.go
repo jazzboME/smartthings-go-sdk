@@ -19,7 +19,7 @@ func (c *SmartThingsClient) DeviceProfileDelete(profileID string) error {
 //DeviceProfileList list device profiles
 func (c *SmartThingsClient) DeviceProfileList() (*DeviceProfileList, error) {
 
-	req, err := c.newRequest(http.MethodGet, fmt.Sprintf("/v1/deviceprofiles"), nil)
+	req, err := c.newRequest(http.MethodGet, "/v1/deviceprofiles", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -48,7 +48,7 @@ func (c *SmartThingsClient) DeviceProfileListByPage(href string) (*DeviceProfile
 //DeviceProfileCreate create device profile
 func (c *SmartThingsClient) DeviceProfileCreate(profile *DeviceProfileCreate) (*DeviceProfile, error) {
 
-	req, err := c.newRequest(http.MethodPost, fmt.Sprintf("/v1/deviceprofiles"), profile)
+	req, err := c.newRequest(http.MethodPost, "/v1/deviceprofiles", profile)
 	if err != nil {
 		return nil, err
 	}

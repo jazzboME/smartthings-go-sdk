@@ -7,7 +7,7 @@ import (
 
 //InstalledAppList list all installed applications
 func (c *SmartThingsClient) InstalledAppList() (*InstalledAppList, error) {
-	req, err := c.newRequest(http.MethodGet, fmt.Sprintf("/v1/installedapps"), nil)
+	req, err := c.newRequest(http.MethodGet, "/v1/installedapps", nil)
 	if err != nil {
 		return nil, err
 	}

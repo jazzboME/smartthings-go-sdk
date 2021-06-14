@@ -7,7 +7,7 @@ import (
 
 //SceneList list all scenes
 func (c *SmartThingsClient) SceneList() (*SceneList, error) {
-	req, err := c.newRequest(http.MethodGet, fmt.Sprintf("/v1/scenes"), nil)
+	req, err := c.newRequest(http.MethodGet, "/v1/scenes", nil)
 	if err != nil {
 		return nil, err
 	}

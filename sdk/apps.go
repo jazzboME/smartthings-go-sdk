@@ -7,7 +7,7 @@ import (
 
 //AppList list all installed applications
 func (c *SmartThingsClient) AppList() (*AppList, error) {
-	req, err := c.newRequest(http.MethodGet, fmt.Sprintf("/v1/apps"), nil)
+	req, err := c.newRequest(http.MethodGet, "/v1/apps", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -45,7 +45,7 @@ func (c *SmartThingsClient) AppGet(app string) (*App, error) {
 
 //AppCreate create new application
 func (c *SmartThingsClient) AppCreate(appCreate AppCreate) (*App, error) {
-	req, err := c.newRequest(http.MethodPost, fmt.Sprintf("/v1/apps"), appCreate)
+	req, err := c.newRequest(http.MethodPost, "/v1/apps", appCreate)
 	if err != nil {
 		return nil, err
 	}
@@ -56,7 +56,7 @@ func (c *SmartThingsClient) AppCreate(appCreate AppCreate) (*App, error) {
 
 //AppUpdate update existing application details
 func (c *SmartThingsClient) AppUpdate(appCreate AppCreate) (*App, error) {
-	req, err := c.newRequest(http.MethodPut, fmt.Sprintf("/v1/apps"), appCreate)
+	req, err := c.newRequest(http.MethodPut, "/v1/apps", appCreate)
 	if err != nil {
 		return nil, err
 	}

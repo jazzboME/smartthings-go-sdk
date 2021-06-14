@@ -8,7 +8,7 @@ import (
 //LocationsList get all locations
 func (c *SmartThingsClient) LocationsList() (*LocationList, error) {
 
-	req, err := c.newRequest(http.MethodGet, fmt.Sprintf("/v1/locations"), nil)
+	req, err := c.newRequest(http.MethodGet, "/v1/locations", nil)
 	if err != nil {
 		return nil, err
 	}
