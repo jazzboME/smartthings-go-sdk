@@ -1,6 +1,6 @@
 package sdk
 
-import "github.com/vbaksa/smartthings-go-sdk/sdk/capabilities"
+import "github.com/jazzboME/smartthings-go-sdk/sdk/capabilities"
 
 //NewSwitchOn turn on switch
 func NewSwitchOn() DeviceCommand {
