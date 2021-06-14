@@ -109,9 +109,7 @@ func (c *SmartThingsClient) DeviceUpdateProperty(deviceID string, property strin
 //DeviceCommand run device command
 func (c *SmartThingsClient) DeviceCommand(deviceID string, command ...DeviceCommand) error {
 	s := make([]DeviceCommand, 0)
-	for _, c := range command {
-		s = append(s, c)
-	}
+	s = append(s, command...)
 	b := &Commands{
 		DeviceCommands: s,
 	}
@@ -126,9 +124,7 @@ func (c *SmartThingsClient) DeviceCommand(deviceID string, command ...DeviceComm
 //DeviceCreateEvent create device event
 func (c *SmartThingsClient) DeviceCreateEvent(deviceID string, command ...DeviceEvent) error {
 	s := make([]DeviceEvent, 0)
-	for _, c := range command {
-		s = append(s, c)
-	}
+	s = append(s, command...)
 	b := &DeviceEventList{
 		DeviceEvents: s,
 	}
