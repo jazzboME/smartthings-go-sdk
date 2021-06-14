@@ -198,7 +198,8 @@ type DeviceComponentStatus struct {
 	TemperatureMeasurement *struct {
 		Temperature struct {
 			Unit  string `json:"unit"`
-			Value int    `json:"value"`
+			Value float64 `json:"value"`
+			Timestamp string `json:"timestamp"`
 		} `json:"temperature"`
 	} `json:"temperatureMeasurement"`
 	Refresh *struct {
