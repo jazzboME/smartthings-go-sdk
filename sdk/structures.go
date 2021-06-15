@@ -115,6 +115,7 @@ type DeviceComponentStatus struct {
 		Battery struct {
 			Unit  string `json:"unit"`
 			Value int    `json:"value"`
+			Timestamp string `json:"timestamp"`
 		} `json:"battery"`
 	} `json:"battery"`
 	Configuration *struct {
