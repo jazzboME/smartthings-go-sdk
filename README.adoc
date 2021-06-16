@@ -1,8 +1,8 @@
 # Smartthings Golang SDK
 
-image:https://goreportcard.com/badge/github.com/jazzboME/smartthings-go-sdk["Go Report Card", link="https://goreportcard.com/report/github.com/vbaksa/smartthings-go-sdk"]
+image:https://goreportcard.com/badge/github.com/jazzboME/smartthings-go-sdk["Go Report Card", link="https://goreportcard.com/report/github.com/jazzboME/smartthings-go-sdk"]
 
-SmartThings Golang SDK gives you ability to control and integrate smart home devices programmatically. SDK controls your home devices by interacting with https://developer.samsung.com/smartthings-api[SmarThings API]
+SmartThings Golang SDK gives you ability to control and integrate smart home devices programmatically. SDK controls your home devices by interacting with https://developer.samsung.com/smartthings-api[SmartThings API]
 
 ## Usage samples
 
