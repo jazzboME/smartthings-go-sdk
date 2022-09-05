@@ -90,6 +90,12 @@ type DeviceStatus struct {
 	Component map[string]DeviceComponentStatus `json:"components"`
 }
 
+type DeviceHealth struct {
+	DeviceID string `json:"deviceId"`
+	State string `json:"state"`
+	LastUpdatedDate time.Time `json:"lastUpdatedDate"`
+}
+
 //DeviceComponentStatus hold information about various device statuses
 type DeviceComponentStatus struct {
 	Actuator *struct {

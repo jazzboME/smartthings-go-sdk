@@ -171,3 +171,16 @@ func DeviceSupportsCapability(capability string, device Device) bool {
 	}
 	return false
 }
+
+//DeviceHealth get device health
+func (c *SmartThingsClient) DeviceHealth(deviceID string) (*DeviceHealth, error) {
+
+	req, err := c.newRequest(http.MethodGet, "/v1/devices/"+deviceID+"/"+"health", nil)
+	if err != nil {
+		return nil, err
+	}
+	var deviceHealth DeviceHealth
+	_, err = c.do(req, &deviceHealth)
+	
+	return &deviceHealth, err
+}
