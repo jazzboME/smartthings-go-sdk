@@ -3,7 +3,7 @@ package sdk
 import (
 	"bytes"
 	"github.com/stretchr/testify/assert"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"testing"
 )
@@ -17,7 +17,7 @@ func TestAppList(t *testing.T) {
 		return &http.Response{
 			StatusCode: 200,
 			// Send response to be tested
-			Body: ioutil.NopCloser(bytes.NewBufferString(`{
+			Body: io.NopCloser(bytes.NewBufferString(`{
   "items": [
     {
       "appName": "security-home-monitor",
@@ -62,7 +62,7 @@ func TestAppListByPage(t *testing.T) {
 		return &http.Response{
 			StatusCode: 200,
 			// Send response to be tested
-			Body: ioutil.NopCloser(bytes.NewBufferString(`{
+			Body: io.NopCloser(bytes.NewBufferString(`{
   "items": [
     {
       "appName": "security-home-monitor",
@@ -107,7 +107,7 @@ func TestAppGet(t *testing.T) {
 		return &http.Response{
 			StatusCode: 200,
 			// Send response to be tested
-			Body: ioutil.NopCloser(bytes.NewBufferString(`{
+			Body: io.NopCloser(bytes.NewBufferString(`{
   "appName": "security-home-monitor",
   "appId": "c71b0a5b-7dab-41fe-b75f-7cf30246468e",
   "appType": "WEBHOOK_SMART_APP",
@@ -144,7 +144,7 @@ func TestAppCreate(t *testing.T) {
 		return &http.Response{
 			StatusCode: 200,
 			// Send response to be tested
-			Body: ioutil.NopCloser(bytes.NewBufferString(`{
+			Body: io.NopCloser(bytes.NewBufferString(`{
   "app": {
     "appName": "security-home-monitor",
     "appId": "c71b0a5b-7dab-41fe-b75f-7cf30246468e",
@@ -186,7 +186,7 @@ func TestAppUpdate(t *testing.T) {
 		return &http.Response{
 			StatusCode: 200,
 			// Send response to be tested
-			Body: ioutil.NopCloser(bytes.NewBufferString(`{
+			Body: io.NopCloser(bytes.NewBufferString(`{
   "appName": "string",
   "displayName": "string",
   "description": "string",
@@ -225,7 +225,7 @@ func TestAppDelete(t *testing.T) {
 		return &http.Response{
 			StatusCode: 200,
 			// Send response to be tested
-			Body: ioutil.NopCloser(bytes.NewBufferString(`{}`)),
+			Body: io.NopCloser(bytes.NewBufferString(`{}`)),
 			// Must be set to non-nil value or it panics
 			Header: make(http.Header),
 		}
@@ -244,7 +244,7 @@ func TestAppGetSettings(t *testing.T) {
 		return &http.Response{
 			StatusCode: 200,
 			// Send response to be tested
-			Body: ioutil.NopCloser(bytes.NewBufferString(`{
+			Body: io.NopCloser(bytes.NewBufferString(`{
   "settings": {
     "mySecretData": "6c21f9ee-7634-413f-89f7-bdfdce88bf0e"
   }
@@ -273,7 +273,7 @@ func TestAppUpdateSettings(t *testing.T) {
 		return &http.Response{
 			StatusCode: 200,
 			// Send response to be tested
-			Body: ioutil.NopCloser(bytes.NewBufferString(`{
+			Body: io.NopCloser(bytes.NewBufferString(`{
   "settings": {
     "mySecretData": "6c21f9ee-7634-413f-89f7-bdfdce88bf0e"
   }
@@ -303,7 +303,7 @@ func TestAppGetOAuthSettings(t *testing.T) {
 		return &http.Response{
 			StatusCode: 200,
 			// Send response to be tested
-			Body: ioutil.NopCloser(bytes.NewBufferString(`{
+			Body: io.NopCloser(bytes.NewBufferString(`{
   "clientName": "My SmartThings Integration",
   "scope": [
     "r:installedapps",
@@ -332,7 +332,7 @@ func TestAppUpdateOAuthSettings(t *testing.T) {
 		return &http.Response{
 			StatusCode: 200,
 			// Send response to be tested
-			Body: ioutil.NopCloser(bytes.NewBufferString(`{
+			Body: io.NopCloser(bytes.NewBufferString(`{
   "clientName": "My SmartThings Integration",
   "scope": [
     "r:installedapps",
@@ -365,7 +365,7 @@ func TestAppGenerateOAuthSettings(t *testing.T) {
 		return &http.Response{
 			StatusCode: 200,
 			// Send response to be tested
-			Body: ioutil.NopCloser(bytes.NewBufferString(`{
+			Body: io.NopCloser(bytes.NewBufferString(`{
   "oauthClientDetails": {
     "clientName": "My SmartThings Integration",
     "scope": [

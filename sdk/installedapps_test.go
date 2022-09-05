@@ -3,7 +3,7 @@ package sdk
 import (
 	"bytes"
 	"github.com/stretchr/testify/assert"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"testing"
 )
@@ -17,7 +17,7 @@ func TestInstalledAppList(t *testing.T) {
 		return &http.Response{
 			StatusCode: 200,
 			// Send response to be tested
-			Body: ioutil.NopCloser(bytes.NewBufferString(`{
+			Body: io.NopCloser(bytes.NewBufferString(`{
   "items": [
     {
       "installedAppId": "8885b9c3-a50d-427e-ad07-d7a2f94421af",
@@ -64,7 +64,7 @@ func TestInstalledAppListByPage(t *testing.T) {
 		return &http.Response{
 			StatusCode: 200,
 			// Send response to be tested
-			Body: ioutil.NopCloser(bytes.NewBufferString(`{
+			Body: io.NopCloser(bytes.NewBufferString(`{
   "items": [
     {
       "installedAppId": "8885b9c3-a50d-427e-ad07-d7a2f94421af",
@@ -110,7 +110,7 @@ func TestInstalledAppDelete(t *testing.T) {
 		return &http.Response{
 			StatusCode: 200,
 			// Send response to be tested
-			Body: ioutil.NopCloser(bytes.NewBufferString(`{}`)),
+			Body: io.NopCloser(bytes.NewBufferString(`{}`)),
 			// Must be set to non-nil value or it panics
 			Header: make(http.Header),
 		}
@@ -129,7 +129,7 @@ func TestInstalledAppConfigList(t *testing.T) {
 		return &http.Response{
 			StatusCode: 200,
 			// Send response to be tested
-			Body: ioutil.NopCloser(bytes.NewBufferString(`{
+			Body: io.NopCloser(bytes.NewBufferString(`{
   "items": [
     {
       "installedAppId": "8885b9c3-a50d-427e-ad07-d7a2f94421af",
@@ -168,7 +168,7 @@ func TestInstalledAppConfigListByPage(t *testing.T) {
 		return &http.Response{
 			StatusCode: 200,
 			// Send response to be tested
-			Body: ioutil.NopCloser(bytes.NewBufferString(`{
+			Body: io.NopCloser(bytes.NewBufferString(`{
   "items": [
     {
       "installedAppId": "8885b9c3-a50d-427e-ad07-d7a2f94421af",
@@ -207,7 +207,7 @@ func TestInstalledAppConfig(t *testing.T) {
 		return &http.Response{
 			StatusCode: 200,
 			// Send response to be tested
-			Body: ioutil.NopCloser(bytes.NewBufferString(`{
+			Body: io.NopCloser(bytes.NewBufferString(`{
   "installedAppId": "8885b9c3-a50d-427e-ad07-d7a2f94421af",
   "configurationId": "c71b0a5b-7dab-41fe-b75f-7cf30246468e",
   "configurationStatus": "AUTHORIZED",

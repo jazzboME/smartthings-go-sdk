@@ -7,7 +7,6 @@ import (
 	"fmt"
 	"golang.org/x/oauth2"
 	"io"
-	"io/ioutil"
 	"net/http"
 	"net/url"
 )
@@ -76,7 +75,7 @@ func (c *SmartThingsClient) do(req *http.Request, v interface{}) (*http.Response
 	}
 	defer resp.Body.Close()
 	if resp.StatusCode != 200 {
-		bodyBytes, _ := ioutil.ReadAll(resp.Body)
+		bodyBytes, _ := io.ReadAll(resp.Body)
 		bodyString := string(bodyBytes)
 		return nil, fmt.Errorf("expected status code 200, but API responded with %d . Response Body: %s", resp.StatusCode, bodyString)
 	}

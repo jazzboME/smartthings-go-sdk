@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"github.com/stretchr/testify/assert"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"testing"
 )
@@ -18,7 +18,7 @@ func TestDeviceProfileList(t *testing.T) {
 		return &http.Response{
 			StatusCode: 200,
 			// Send response to be tested
-			Body: ioutil.NopCloser(bytes.NewBufferString(`{
+			Body: io.NopCloser(bytes.NewBufferString(`{
   "items": [
     {
       "id": "a362ddb6-349b-4650-9911-681b51069a57",
@@ -69,7 +69,7 @@ func TestDeviceProfileListByPage(t *testing.T) {
 		return &http.Response{
 			StatusCode: 200,
 			// Send response to be tested
-			Body: ioutil.NopCloser(bytes.NewBufferString(`{
+			Body: io.NopCloser(bytes.NewBufferString(`{
   "items": [
     {
       "id": "a362ddb6-349b-4650-9911-681b51069a57",
@@ -132,7 +132,7 @@ func TestDeviceProfileCreate(t *testing.T) {
 		return &http.Response{
 			StatusCode: 200,
 			// Send response to be tested
-			Body: ioutil.NopCloser(bytes.NewBufferString(`{
+			Body: io.NopCloser(bytes.NewBufferString(`{
   "id": "a362ddb6-349b-4650-9911-681b51069a57",
   "name": "thermostat1.model1",
   "owner": {
@@ -170,7 +170,7 @@ func TestDeviceProfileDelete(t *testing.T) {
 		return &http.Response{
 			StatusCode: 200,
 			// Send response to be tested
-			Body: ioutil.NopCloser(bytes.NewBufferString(`{}`)),
+			Body: io.NopCloser(bytes.NewBufferString(`{}`)),
 			// Must be set to non-nil value or it panics
 			Header: make(http.Header),
 		}

@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/stretchr/testify/assert"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"testing"
 )
@@ -18,7 +18,7 @@ func TestDeviceList(t *testing.T) {
 		return &http.Response{
 			StatusCode: 200,
 			// Send response to be tested
-			Body: ioutil.NopCloser(bytes.NewBufferString(`{
+			Body: io.NopCloser(bytes.NewBufferString(`{
   "items": [
     {
       "deviceId": "6f5ea629-4c05-4a90-a244-cc129b0a80c3",
@@ -81,7 +81,7 @@ func TestDeviceListByPage(t *testing.T) {
 		return &http.Response{
 			StatusCode: 200,
 			// Send response to be tested
-			Body: ioutil.NopCloser(bytes.NewBufferString(`{
+			Body: io.NopCloser(bytes.NewBufferString(`{
   "items": [
     {
       "deviceId": "6f5ea629-4c05-4a90-a244-cc129b0a80c3",
@@ -143,7 +143,7 @@ func TestDeviceDescription(t *testing.T) {
 		return &http.Response{
 			StatusCode: 200,
 			// Send response to be tested
-			Body: ioutil.NopCloser(bytes.NewBufferString(`{
+			Body: io.NopCloser(bytes.NewBufferString(`{
   "deviceId": "6f5ea629-4c05-4a90-a244-cc129b0a80c3",
   "name": "color.light.100x",
   "label": "color.light.100x",
@@ -192,7 +192,7 @@ func TestDeviceInstall(t *testing.T) {
 		return &http.Response{
 			StatusCode: 200,
 			// Send response to be tested
-			Body: ioutil.NopCloser(bytes.NewBufferString(`{
+			Body: io.NopCloser(bytes.NewBufferString(`{
   "deviceId": "6f5ea629-4c05-4a90-a244-cc129b0a80c3",
   "name": "color.light.100x",
   "label": "color.light.100x",
@@ -252,7 +252,7 @@ func TestDeviceDelete(t *testing.T) {
 		return &http.Response{
 			StatusCode: 200,
 			// Send response to be tested
-			Body: ioutil.NopCloser(bytes.NewBufferString(`{}`)),
+			Body: io.NopCloser(bytes.NewBufferString(`{}`)),
 			// Must be set to non-nil value or it panics
 			Header: make(http.Header),
 		}
@@ -271,7 +271,7 @@ func TestDeviceUpdateLabel(t *testing.T) {
 		return &http.Response{
 			StatusCode: 200,
 			// Send response to be tested
-			Body: ioutil.NopCloser(bytes.NewBufferString(`{
+			Body: io.NopCloser(bytes.NewBufferString(`{
   "deviceId": "6f5ea629-4c05-4a90-a244-cc129b0a80c3",
   "name": "color.light.100x",
   "label": "color.light.100x",
@@ -315,7 +315,7 @@ func TestDeviceExecuteCommand(t *testing.T) {
 		assert.Equal(t, req.URL.String(), "https://api.smartthings.com/v1/devices/device-id/commands")
 		assert.Equal(t, req.Method, http.MethodPost)
 
-		//	bodyBytes, _ := ioutil.ReadAll(req.Body)
+		//	bodyBytes, _ := io.ReadAll(req.Body)
 		var hh Commands
 		decoder := json.NewDecoder(req.Body)
 		err2 := decoder.Decode(&hh)
@@ -344,7 +344,7 @@ func TestDeviceExecuteCommand(t *testing.T) {
 		return &http.Response{
 			StatusCode: 200,
 			// Send response to be tested
-			Body: ioutil.NopCloser(bytes.NewBufferString(`{}`)),
+			Body: io.NopCloser(bytes.NewBufferString(`{}`)),
 			// Must be set to non-nil value or it panics
 			Header: make(http.Header),
 		}
@@ -393,7 +393,7 @@ func TestDeviceCreateEvent(t *testing.T) {
 		return &http.Response{
 			StatusCode: 200,
 			// Send response to be tested
-			Body: ioutil.NopCloser(bytes.NewBufferString(`{}`)),
+			Body: io.NopCloser(bytes.NewBufferString(`{}`)),
 			// Must be set to non-nil value or it panics
 			Header: make(http.Header),
 		}
@@ -419,7 +419,7 @@ func TestDeviceStatus(t *testing.T) {
 		return &http.Response{
 			StatusCode: 200,
 			// Send response to be tested
-			Body: ioutil.NopCloser(bytes.NewBufferString(`{
+			Body: io.NopCloser(bytes.NewBufferString(`{
   "components": {
     "main": {
       "switch": {
@@ -459,7 +459,7 @@ func TestDeviceComponentStatus(t *testing.T) {
 		return &http.Response{
 			StatusCode: 200,
 			// Send response to be tested
-			Body: ioutil.NopCloser(bytes.NewBufferString(`{
+			Body: io.NopCloser(bytes.NewBufferString(`{
   "switch": {
     "switch": {
       "value": "on"

@@ -3,7 +3,7 @@ package sdk
 import (
 	"bytes"
 	"github.com/stretchr/testify/assert"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"testing"
 )
@@ -17,7 +17,7 @@ func TestSceneList(t *testing.T) {
 		return &http.Response{
 			StatusCode: 200,
 			// Send response to be tested
-			Body: ioutil.NopCloser(bytes.NewBufferString(`{
+			Body: io.NopCloser(bytes.NewBufferString(`{
   "items": [
     {
       "sceneId": "string",
@@ -62,7 +62,7 @@ func TestSceneListByPage(t *testing.T) {
 		return &http.Response{
 			StatusCode: 200,
 			// Send response to be tested
-			Body: ioutil.NopCloser(bytes.NewBufferString(`{
+			Body: io.NopCloser(bytes.NewBufferString(`{
   "items": [
     {
       "sceneId": "string",
@@ -106,7 +106,7 @@ func TestSceneExecute(t *testing.T) {
 		return &http.Response{
 			StatusCode: 200,
 			// Send response to be tested
-			Body: ioutil.NopCloser(bytes.NewBufferString(`{
+			Body: io.NopCloser(bytes.NewBufferString(`{
   "status": "success"
 }`)),
 			// Must be set to non-nil value or it panics

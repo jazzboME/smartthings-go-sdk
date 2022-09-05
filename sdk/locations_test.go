@@ -3,7 +3,7 @@ package sdk
 import (
 	"bytes"
 	"github.com/stretchr/testify/assert"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"testing"
 )
@@ -17,7 +17,7 @@ func TestLocationList(t *testing.T) {
 		return &http.Response{
 			StatusCode: 200,
 			// Send response to be tested
-			Body: ioutil.NopCloser(bytes.NewBufferString(`{
+			Body: io.NopCloser(bytes.NewBufferString(`{
   "items": [
     {
       "locationId": "6b3d1909-1e1c-43ec-adc2-5f941de4fbf9",
@@ -53,7 +53,7 @@ func TestLocationsListByPage(t *testing.T) {
 		return &http.Response{
 			StatusCode: 200,
 			// Send response to be tested
-			Body: ioutil.NopCloser(bytes.NewBufferString(`{
+			Body: io.NopCloser(bytes.NewBufferString(`{
   "items": [
     {
       "locationId": "6b3d1909-1e1c-43ec-adc2-5f941de4fbf9",
@@ -89,7 +89,7 @@ func TestLocation(t *testing.T) {
 		return &http.Response{
 			StatusCode: 200,
 			// Send response to be tested
-			Body: ioutil.NopCloser(bytes.NewBufferString(`{
+			Body: io.NopCloser(bytes.NewBufferString(`{
   "locationId": "6b3d1909-1e1c-43ec-adc2-5f941de4fbf9",
   "name": "Home",
   "latitude": 45.00708112,
@@ -119,7 +119,7 @@ func TestLocationUpdate(t *testing.T) {
 		return &http.Response{
 			StatusCode: 200,
 			// Send response to be tested
-			Body: ioutil.NopCloser(bytes.NewBufferString(`{
+			Body: io.NopCloser(bytes.NewBufferString(`{
   "locationId": "6b3d1909-1e1c-43ec-adc2-5f941de4fbf9",
   "name": "Home",
   "latitude": 45.00708112,
@@ -152,7 +152,7 @@ func TestLocationDelete(t *testing.T) {
 		return &http.Response{
 			StatusCode: 200,
 			// Send response to be tested
-			Body: ioutil.NopCloser(bytes.NewBufferString(`{}`)),
+			Body: io.NopCloser(bytes.NewBufferString(`{}`)),
 			// Must be set to non-nil value or it panics
 			Header: make(http.Header),
 		}

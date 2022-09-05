@@ -3,7 +3,7 @@ package sdk
 import (
 	"bytes"
 	"github.com/stretchr/testify/assert"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"testing"
 )
@@ -17,7 +17,7 @@ func TestSubscriptionList(t *testing.T) {
 		return &http.Response{
 			StatusCode: 200,
 			// Send response to be tested
-			Body: ioutil.NopCloser(bytes.NewBufferString(`{
+			Body: io.NopCloser(bytes.NewBufferString(`{
   "items": [
     {
       "id": "5e1b134b-bd85-4125-9c25-4a8291e754aa",
@@ -63,7 +63,7 @@ func TestSubscriptionListByPage(t *testing.T) {
 		return &http.Response{
 			StatusCode: 200,
 			// Send response to be tested
-			Body: ioutil.NopCloser(bytes.NewBufferString(`{
+			Body: io.NopCloser(bytes.NewBufferString(`{
   "items": [
     {
       "id": "5e1b134b-bd85-4125-9c25-4a8291e754aa",
@@ -109,7 +109,7 @@ func TestSubscriptionDelete(t *testing.T) {
 		return &http.Response{
 			StatusCode: 200,
 			// Send response to be tested
-			Body: ioutil.NopCloser(bytes.NewBufferString(`{
+			Body: io.NopCloser(bytes.NewBufferString(`{
   "count": 0
 }`)),
 			// Must be set to non-nil value or it panics
@@ -129,7 +129,7 @@ func TestSubscriptionDeleteAll(t *testing.T) {
 		return &http.Response{
 			StatusCode: 200,
 			// Send response to be tested
-			Body: ioutil.NopCloser(bytes.NewBufferString(`{
+			Body: io.NopCloser(bytes.NewBufferString(`{
   "count": 0
 }`)),
 			// Must be set to non-nil value or it panics
@@ -150,7 +150,7 @@ func TestSubscriptionGet(t *testing.T) {
 		return &http.Response{
 			StatusCode: 200,
 			// Send response to be tested
-			Body: ioutil.NopCloser(bytes.NewBufferString(`{
+			Body: io.NopCloser(bytes.NewBufferString(`{
   "id": "5e1b134b-bd85-4125-9c25-4a8291e754aa",
   "installedAppId": "fb05c874-cf1d-406a-930c-69a081e0eaee",
   "sourceType": "DEVICE",
